@@ -1,0 +1,220 @@
+##########################################################################################
+#                                                                                        #
+#       ____  __                     _       __           __    __     ____              #
+#      / __ \/ /___ ___  _____  ____| |     / /___  _____/ /___/ /____/ __ \_________    #
+#     / /_/ / / __ `/ / / / _ \/ ___/ | /| / / __ \/ ___/ / __  / ___/ /_/ / ___/ __ \   #
+#    / ____/ / /_/ / /_/ /  __/ /   | |/ |/ / /_/ / /  / / /_/ (__  ) ____/ /  / /_/ /   #
+#   /_/   /_/\__,_/\__, /\___/_/    |__/|__/\____/_/  /_/\__,_/____/_/   /_/   \____/    #
+#                 /____/                                                                 #
+#                                                                                        #
+#                          Thank you for purchasing the plugin!                          #
+#                                                                                        #
+#                                  Created by: _HeroPwP                                  #
+##########################################################################################
+
+Basic:
+  # The prefix of the World Name
+  World-Prefix: 'PlayerWorldsPro_'
+  # Should a player teleport to the player world after creating a player world?
+  Teleport-On-Create: true
+  # Should a player respawn in the player world?
+  Respawn: true
+  # Should Nether and The End portals be enabled?
+  Portals: true
+  # All player worlds load on startup.
+  Load-On-Startup: true
+  Optimization:
+    # If false, chunks of the world will not be kept in memory. They are resulting in less memory used by your server when players aren't logged in.
+    Keep-Spawn-In-Memory: false
+    # If true, the chunks will be loaded/generated asynchronously before teleporting.
+    # Note: You need to use PaperMC (PaperSpigot).
+    Teleport: false
+    # Player world will be unloaded if there is no player in it.
+    Unload-Empty-Worlds:
+      Enabled: false
+      # Time in seconds after which the empty world will be unloaded.
+      Delay: 0
+  Check-For-Updates: true
+
+# Messages that appear when a player joins or leaves from the player world.
+JoinAndLeaveMSG:
+  Enabled: true
+  # If a player with the permission: PlayerWorldsPro.bypass.JoinAndLeaveMSG joins or leaves from a player world, no message will be displayed to anyone.
+  Bypass: false
+
+# You can also turn on the expiration of player worlds.
+Expiration:
+  # You need to have an economy plugin to turn on.
+  Enabled: false
+  # Expiration Format
+  Format: 'dd.MM.yyyy HH:mm'
+
+# Time in seconds before a player can create a player's world since the last creation.
+Cooldown:
+  Enabled: true
+  Interval: 60
+
+# New players can create a free player world for a certain number of days.
+# Note:You must turn on Expiration first
+Claim:
+  Enabled: false
+  # Length of expiration in days
+  Length: 7
+
+# Here, you will find commands that will trigger a specific action.
+Commands:
+  # Create a player world
+  # Available variables:
+  #  %owner% - get the owner of the player world
+  #  %world% - get the name of the world
+  Create:
+    Enabled: false
+    List:
+      - 'say %owner% created world %world%!'
+      - 'pwi group addworld %world% %world%'
+      - 'pwi group addworld %world% %world%_nether'
+      - 'pwi group addworld %world% %world%_the_end'
+  # Delete player world
+  # Available variables:
+  #  %owner% - get the owner of the player world
+  #  %world% - get the name of the world
+  Delete:
+    Enabled: false
+    List:
+      - 'say %owner% deleted world %world%!'
+      - 'pwi group removeworld %world% %world%'
+      - 'pwi group removeworld %world% %world%_nether'
+      - 'pwi group removeworld %world% %world%_the_end'
+      - 'pwi group delete %world%'
+
+# These settings set when the player world created.
+Default-Settings:
+  # Change of weather
+  WeatherCycle: true
+  # Difficulty:
+  # PEACEFUL, EASY, NORMAL, HARD
+  Difficulty: EASY
+  # Enable or Disable breaking blocks of players.
+  Block-Breaking: true
+  # Enable or Disable placing blocks of players.
+  Block-Placing: true
+  # Enable or Disable PVP
+  PvP: true
+  # Enable or Disable Pickup items
+  Item-Pickup: true
+  # Enable or Disable Drop items
+  Drop-Item: true
+  # Enable or Disable Player Damage
+  Player-Damage: true
+  # Enable or Disable Hunger
+  Hunger: true
+  # Enable or Disable interaction with Bucket
+  Bucket: true
+  # Default game mode for players:
+  # SURVIVAL, CREATIVE, ADVENTURE, SPECTATOR
+  GameMode: SURVIVAL
+  # Here, you can set the privacy of the player world.
+  # PUBLIC, PRIVATE
+  Access: PUBLIC
+  # Size of the World Border
+  # Use number -1 for the default size of the World Border.
+  World-Border: -1
+
+# You can set your custom world generators:
+    # Custom-Generators:
+    #   - 'VoidGenerator'
+    #   - 'Realistic_World'
+Custom-Generators: {}
+
+# Here you can enable or disable permissions.
+# False - A player doesn't need permission
+# True - Player needs permission
+Permissions:
+  # If true, a player with PlayerWorldsPro.bypass.PlayerCount permission and the game mode Spectator will not be counted in the number of players in the world.
+  Player-Count: false
+  # Create any player world: PlayerWorldsPro.createWorld
+  Create-World: false
+  Create-World-Type:
+    # Create normal player world: PlayerWorldsPro.createWorld.normal
+    Normal: false
+    # Create flat player world: PlayerWorldsPro.createWorld.flat
+    Flat: false
+    # Create empty player world: PlayerWorldsPro.createWorld.empty
+    Empty: false
+    # Create a player world with pre-built maps: PlayerWorldsPro.createWorld.preBuiltMaps
+    Pre-Built-Maps: false
+    # Create player world with custom generator: PlayerWorldsPro.createWorld.customGenerators
+    Custom-Generators: false
+  # Change time of player world: PlayerWorldsPro.changeTime
+  Change-Time: false
+  # Change weather of player world: PlayerWorldsPro.changeWeather
+  Change-Weather: false
+  # Change difficulty of the player world: PlayerWorldsPro.changeDifficulty
+  Change-Difficulty: false
+  # Set spawn location of the player world: PlayerWorldsPro.setSpawn
+  Set-Spawn-Location: false
+  # Edit Block Breaking of the player world: PlayerWorldsPro.editBlockBreaking
+  Block-Breaking: false
+  # Edit Block Placing of the player world: PlayerWorldsPro.editBlockPlacing
+  Block-Placing: false
+  # Edit PvP of the player world: PlayerWorldsPro.editPvP
+  PvP: false
+  # Change the world border of the player world: PlayerWorldsPro.worldBorder
+  World-Border: false
+  # Edit Item Pickup of the player world: PlayerWorldsPro.editItemPickup
+  Item-Pickup: false
+  # Edit Drop Item of the player world: PlayerWorldsPro.editDropItem
+  Drop-Item: false
+  # Edit Player Damage: PlayerWorldsPro.editPlayerDamage
+  Player-Damage: false
+  # Edit Hunger: PlayerWorldsPro.editHunger
+  Hunger: false
+  # Edit Bucket: PlayerWorldsPro.editBucket
+  Bucket: true
+  # Change Game Mode of Player: PlayerWorldsPro.changeGameMode
+  Change-GameMode: false
+  # Change default Game Mode of player world: PlayerWorldsPro.changeGameMode.default
+  Change-Default-GameMode: false
+  # Teleport player in the player world: PlayerWorldsPro.teleport
+  Teleport: false
+  # Enable or disable flying of a player in the player world: PlayerWorldsPro.fly
+  Fly: false
+  # Change access of player world: PlayerWorldsPro.access
+  Access: false
+  # Kick player from the player world: PlayerWorldsPro.kick
+  Kick: false
+  # Ban or unban player from the player world: PlayerWorldsPro.ban
+  Ban: false
+
+# Here, you can customize menus.
+GUI:
+  # Basic GUI configuration
+  Basic:
+    # Hides a item if the player does not have permission.
+    Hide-Without-Permission: false
+
+  Buy-Player-World:
+    Items:
+      First:
+        # Length of expiration in days
+        Length: 7
+        # Price per purchase
+        Price: 300
+      Second:
+        Length: 14
+        Price: 600
+      Third:
+        Length: 30
+        Price: 1200
+
+  Extend-Player-World:
+    Items:
+      First:
+        Length: 7
+        Price: 300
+      Second:
+        Length: 14
+        Price: 600
+      Third:
+        Length: 30
+        Price: 1200
